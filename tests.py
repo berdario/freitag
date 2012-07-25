@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-# encoding: utf-8
+#!/usr/bin/env python3
 #
 # FreiTAG - A simple song command line tool to tag and rename songs.
 # Copyright (c) 2010-2011 Giuseppe Capizzi

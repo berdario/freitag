@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-# encoding: utf-8
+#!/usr/bin/env python3
 #
 # FreiTAG - A simple command line tool to tag and rename mp3s.
 # Copyright (c) 2010-2011 Giuseppe Capizzi
@@ -80,11 +79,9 @@ class FreiSong:
 
     def update(self, tags):
         """Update song with tags."""
-        # ignore unsupported tags
-        tags = dict((name, value) for name, value in tags.items()
-                if name in self.TAGS and value is not None)
-        # convert everything to unicode
-        tags = dict((name, unicode(value)) for (name, value) in tags.items())
+        # ignore unsupported tags and convert everything to unicode
+        tags = {name: str(value) for name, value in tags.items()
+                if name in self.TAGS and value is not None}
         self.mp3.update(tags)
 
     def save(self):
@@ -163,7 +160,7 @@ def main():
                         + 'With Spaces format')
 
     # tag setters
-    for tag, props in FreiSong.TAGS.iteritems():
+    for tag, props in FreiSong.TAGS.items():
         long_opt = '--%s' % tag
         short_opt = '-%s' % props['abbr']
         parser.add_argument(long_opt, short_opt, help=props['help'])
@@ -197,7 +194,7 @@ def main():
 def get(songs, format):
     """Print the songs informations according to the specified format."""
     for song in songs:
-        print song.format(format)
+        print(song.format(format))
 
 
 def set(songs, args):
