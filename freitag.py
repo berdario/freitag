@@ -79,8 +79,8 @@ class FreiSong:
 
     def update(self, tags):
         """Update song with tags."""
-        # ignore unsupported tags and convert everything to unicode
-        tags = {name: str(value) for name, value in tags.items()
+        # ignore unsupported tags
+        tags = {name: value for name, value in tags.items()
                 if name in self.TAGS and value is not None}
         self.mp3.update(tags)
 
